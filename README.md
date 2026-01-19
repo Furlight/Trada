@@ -2,6 +2,8 @@
 
 Trada is a professional-grade, cross-platform trading journal designed to track, analyze, and optimize trading performance. Built with a modern full-stack architecture, it uses **PostgreSQL** as its mandatory source of truth and **FastAPI** as its high-performance engine.
 
+**Key Feature:** Trada is **fully customizable**. It includes an **Admin Panel** to manage dynamic forms, strategies, and custom fields without code changes.
+
 ---
 
 ## 🏗 Project Organization
@@ -15,7 +17,7 @@ This repository is managed as a monorepo to ensure seamless synchronization betw
 │   ├── Dockerfile           # Backend containerization
 │   └── requirements.txt     # Python dependencies (fastapi, sqlalchemy, psycopg2)
 ├── mobile-desktop-app/      # Kotlin Multiplatform project (Trada Client)
-│   ├── composeApp/          # Shared UI code (Android, iOS, Desktop, Wasm Web)
+│   ├── composeApp/          # Shared UI code (Dynamic form rendering)
 │   ├── shared/              # Core business logic & Ktor API Client
 │   └── build.gradle.kts     # KMP configuration
 ├── docker-compose.yml       # Infrastructure (PostgreSQL 15 + API)
@@ -45,12 +47,24 @@ This repository is managed as a monorepo to ensure seamless synchronization betw
 
 ---
 
+## 🔄 Gitflow Workflow
+
+Trada follows the **Gitflow** branching model to ensure stability and clean versioning:
+
+* **main**: Official release history (Production stable).
+* **develop**: Main integration branch for features.
+* **feature/**: New functionalities (e.g., `feature/admin-panel`). Created from `develop`.
+* **hotfix/**: Urgent production fixes. Created from `main`, merged to `main` and `develop`.
+* **release/**: Preparation for a new production release.
+
+---
+
 ## 🚀 Installation & Setup
 
 ### 1. Prerequisites
 
 * **Python 3.11+**
-* **JDK 17+**
+* **JDK 17+** (Required for Kotlin and Android)
 * **Docker & Docker Compose** (Required for PostgreSQL)
 * **Android Studio** (Ladybug or newer)
 
@@ -95,7 +109,24 @@ FastAPI is optimized to work with KMP. Define your Pydantic schemas in `backend-
 
 ### Adaptive UI
 
-All UI code resides in `mobile-desktop-app/composeApp/src/commonMain`. Use **Adaptive Layouts** to automatically switch between mobile and web/desktop views.
+All UI code resides in `mobile-desktop-app/composeApp/src/commonMain`. Use **Adaptive Layouts** to automatically switch between mobile and web/desktop views. UI forms are generated dynamically based on the Admin Panel settings.
+
+---
+
+## 🛡 Issue Board & Labels
+
+### Criticity (MoSCoW)
+
+* `criticity: critical`: Blocker, immediate action required.
+* `criticity: must-have`: Essential for the MVP/Milestone.
+* `criticity: should-have`: Important feature with high value.
+* `criticity: could-have`: Bonus or aesthetic improvement.
+
+### Content & Gitflow Tags
+
+* `type: user-story`: High-level requirement.
+* `type: technical-task`: Detailed implementation task.
+* `type: feature`, `type: bug`, `type: hotfix`, `type: release`, `type: chore`.
 
 ---
 
@@ -103,8 +134,8 @@ All UI code resides in `mobile-desktop-app/composeApp/src/commonMain`. Use **Ada
 
 Trada uses a **rebase and squash** strategy:
 
-1. **Rebase**: `git pull origin main --rebase`
-2. **Squash**: Merge PRs into a single clean commit on the `main` branch.
+* **Rebase**: `git pull origin develop --rebase`
+* **Squash**: Merge PRs into a single clean commit on the **develop** (for features) or **main** (for releases) branch.
 
 ---
 
@@ -114,3 +145,4 @@ Trada uses a **rebase and squash** strategy:
 * [PostgreSQL 15 Official Docs](https://www.postgresql.org/docs/15/index.html)
 * [Compose Multiplatform Documentation](https://www.jetbrains.com/lp/compose-multiplatform/)
 * [Kotlin Wasm (WebAssembly) Guide](https://kotl.in/wasm)
+* [Gitflow Workflow Guide](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
