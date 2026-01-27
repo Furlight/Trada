@@ -1,0 +1,82 @@
+# --- General ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+*.swp
+*.log
+.env
+!.env.example
+.venv
+env/
+venv/
+
+# --- Docker ---
+.docker/
+docker-compose.override.yml
+
+# --- Python (backend-api) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+
+# --- Kotlin Multiplatform (mobile-desktop-app) ---
+.gradle/
+build/
+capture/
+/local.properties
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+*.iml
+.kotlin/
+
+# --- Android Specific ---
+*.ap_
+*.apk
+*.dex
+bin/
+gen/
+out/
+
+# --- iOS Specific (KMP) ---
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+*.xcuserstate
+mobile-desktop-app/shared/build/
+mobile-desktop-app/composeApp/build/
+
+# --- Web (Wasm) ---
+.gradle/js/
+node_modules/
+dist/
+
+# --- Database ---
+postgres_data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
