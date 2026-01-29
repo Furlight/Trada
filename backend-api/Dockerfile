@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Installation des dépendances système pour PostgreSQL
+# Installating system dependences for PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
@@ -13,5 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Le port 8000 correspond au port exposé dans docker-compose
+# Port 8000 matches the port exposed in docker-compose.
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
