@@ -4,11 +4,8 @@ services:
     image: postgres:15-alpine
     container_name: trada_db
     restart: always
-    environment:
-      # These variables are pulled from your .env file
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+    env_file:
+      - .env
     ports:
       - "5432:5432"
     volumes:
